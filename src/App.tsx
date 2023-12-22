@@ -1,4 +1,6 @@
+import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
+import { NewsWithInfiniteScroll } from "./components/news/News";
 import ReduxProvider from "./providers/ReduxProvider";
 
 function App() {
@@ -8,6 +10,10 @@ function App() {
         <header>
           <Navbar />
         </header>
+        <main>
+          <Hero />
+          <NewsWithInfiniteScroll />
+        </main>
       </div>
     </ReduxProvider>
   );

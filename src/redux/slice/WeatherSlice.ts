@@ -1,22 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Define an object with keys and values as strings
+type StringObject = Record<string, string>;
+
 interface weatherType {
-  weather: string[];
+  weathers: string[];
+  todaysWeather: StringObject;
 }
 
 const initialState: weatherType = {
-  weather: [],
+  weathers: [],
+  todaysWeather: {},
 };
 
 export const WeatherSlice = createSlice({
   name: "weather slice",
   initialState,
   reducers: {
-    addWeather: (state, action) => {
-      state.weather = [...state.weather, ...action.payload];
+    addWeathers: (state, action) => {
+      state.weathers = [...state.weathers, ...action.payload];
+    },
+    addTodaysWeather: (state, action) => {
+      state.todaysWeather = { ...action.payload };
     },
   },
 });
 
-export const { addWeather } = WeatherSlice.actions;
+export const { addWeathers, addTodaysWeather } = WeatherSlice.actions;
 export default WeatherSlice.reducer;

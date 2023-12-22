@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface NewsType {
   news: string[];
+  loading: boolean;
 }
 const initialState: NewsType = {
   news: [],
+  loading: false,
 };
 
 export const NewsSlice = createSlice({
@@ -14,8 +16,11 @@ export const NewsSlice = createSlice({
     addNews: (state, action) => {
       state.news = [...state.news, action.payload];
     },
+    setNewsLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { addNews } = NewsSlice.actions;
+export const { addNews,setNewsLoading } = NewsSlice.actions;
 export default NewsSlice.reducer;
